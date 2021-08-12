@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flaming Calculator</title>
 </head>
-Flaming Calculator
+Flaming Calculator <br>
 <body>
     <form action = "flamecalc.php" method = "POST">
        Thief: <input type="checkbox" name = "expClass[]" value="Thief"><br>
@@ -16,27 +16,45 @@ Flaming Calculator
        Archer: <input type="checkbox" name = "expClass[]" value="Archer"><br>
         
 Input the flame score <br>
-STR: <input type="number" name = "baseStr" value = "0"><br>
-DEX: <input type="number" name = "baseDex" value = "0"><br>
-INT: <input type="number" name = "baseInt" value = "0"><br>
-LUK: <input type="number" name = "baseLuk" value = "0"><br>
-ATK: <input type="number" name = "baseAtk" value = "0"><br>
-MATT: <input type="number" name = "baseMatk" value = "0"><br>
-ALL %: <input type="number" name = "allStat" value = "0"><br>
-<input type = "submit"><br>
-Flame Score:
+STR: <input type="number" name = "num1" ><br>
+DEX: <input type="number" name = "num2" ><br>
+INT: <input type="number" name = "num3" ><br>
+LUK: <input type="number" name = "num4" ><br>
+ATK: <input type="number" name = "atkStat"><br>
+MATT: <input type="number" name = "matkStat"><br>
+ALL %: <input type="number" name = "allStat" ><br>
+<input type = "submit"> <br>
+Flame Score: 
 </form>
     <?php
-    $expClass = $_POST["expClass"];
-    echo $expClass[0];
-    function calcFlame()
-    {
-    if (isset($_POST['Thief']))
-        {
-        echo $_POST['baseStr'] + ($_POST['allStat'] * 8);
-        }
+   if(isset($_POST['expClass'])){
+    if(in_array('Thief', $_POST['expClass'])){
+        echo "Thief was checked";
+        echo "<br>";
+        echo $_POST['num4'] + ($_POST['allStat'] * 8) + ($_POST['atkStat'] * 4);
     }
-
+        if(in_array('Mage', $_POST['expClass'])){
+            echo "Mage was checked";
+            echo "<br>";
+        echo $_POST['num3'] + ($_POST['allStat'] * 8) + ($_POST['matkStat'] * 4);
+        }
+            if(in_array('Pirate', $_POST['expClass'])){
+                echo "Pirate was checked";
+                echo "<br>";
+        echo $_POST['num2'] + ($_POST['allStat'] * 8) + ($_POST['atkStat'] * 4);
+            }
+                if(in_array('Warrior', $_POST['expClass'])){
+                    echo "Warrior was checked";
+                    echo "<br>";
+        echo $_POST['num1'] + ($_POST['allStat'] * 8) + ($_POST['atkStat'] * 4);
+                }
+                    if(in_array('Archer', $_POST['expClass'])){
+                        echo "Archer was checked";
+                        echo "<br>";
+        echo $_POST['num2'] + ($_POST['allStat'] * 8) + ($_POST['atkStat'] * 4);
+                    }
+}
+echo "<br>";
     ?>
 </body>
 </html>
